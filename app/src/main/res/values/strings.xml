@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">BasicAppV2</string>
+    <string name="couldntReachServerError">Couldn\'t reach server. Check your internet connection.</string>
+    <string name="unexpectedError">An unexpected error occurred</string>
+    <string name="navigation_home_title">Home</string>
+    <string name="navigation_favorite_title">Favorites</string>
+    <string name="search_news_title">Search News</string>
+    <string name="search_hint">Search somethings...</string>
+    <string name="search_user_empty_error">No results !!</string>
+    <string name="source">Source:</string>
+    <string name="error_text">Not found !!</string>
+    <string name="added_new_headlines">New headlines added</string>
+</resources>
