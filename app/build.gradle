@@ -8,11 +8,11 @@ plugins {
 }
 
 android {
-    namespace 'com.egeysn.sampleapp'
+    namespace 'com.egeysn.basicappv2'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.egeysn.sampleapp"
+        applicationId "com.egeysn.basicappv2"
         minSdk 21
         targetSdk 33
         versionCode 1
