@@ -11,13 +11,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.egeysn.basicappv2.R
 import com.egeysn.basicappv2.common.extension.safeGet
 import com.egeysn.basicappv2.databinding.RecyclerItemLocationsBinding
-import com.egeysn.basicappv2.domain.models.LocationItem
+import com.egeysn.basicappv2.domain.models.SatelliteItem
 
 class LocationsAdapter(
     private val listener: LocationsItemListener,
 ) : RecyclerView.Adapter<LocationsAdapter.ViewHolder>() {
 
-    private val data = ArrayList<LocationItem>()
+    private val data = ArrayList<SatelliteItem>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = RecyclerItemLocationsBinding.inflate(
@@ -29,7 +29,7 @@ class LocationsAdapter(
     }
 
     @SuppressLint("NotifyDataSetChanged")
-    fun setItems(items: List<LocationItem>) {
+    fun setItems(items: List<SatelliteItem>) {
         val diffCallback = DiffCallback(data, items)
         val diffResult = DiffUtil.calculateDiff(diffCallback)
         this.data.clear()
@@ -47,13 +47,13 @@ class LocationsAdapter(
         private val listener: LocationsItemListener,
     ) : RecyclerView.ViewHolder(binding.root), View.OnClickListener {
 
-        private lateinit var result: LocationItem
+        private lateinit var result: SatelliteItem
 
         init {
             binding.root.setOnClickListener(this)
         }
 
-        fun bind(item: LocationItem) {
+        fun bind(item: SatelliteItem) {
             this.result = item
             binding.tvName.text = item.name.safeGet()
             if (item.active) {

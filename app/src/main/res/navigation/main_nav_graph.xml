@@ -15,7 +15,7 @@
 
     <fragment
         android:id="@+id/satelliteDetailFragment"
-        android:name="com.egeysn.basicappv2.presentation.newDetail.SatelliteDetailFragment"
+        android:name="com.egeysn.basicappv2.presentation.satelliteDetail.SatelliteDetailFragment"
         android:label="SatelliteDetailFragment" >
     </fragment>
 </navigation>

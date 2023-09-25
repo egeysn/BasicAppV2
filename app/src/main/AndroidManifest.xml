@@ -15,7 +15,7 @@
         android:theme="@style/BasicAppV2">
         <activity
             android:launchMode="singleTop"
-            android:name="com.egeysn.basicappv2.presentation.main.MainActivity"
+            android:name="com.egeysn.basicappv2.presentation.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -18,10 +18,10 @@ import com.egeysn.basicappv2.common.extension.addSimpleVerticalDecoration
 import com.egeysn.basicappv2.common.extension.show
 import com.egeysn.basicappv2.common.utils.UiText
 import com.egeysn.basicappv2.databinding.FragmentLocationsBinding
-import com.egeysn.basicappv2.domain.models.LocationItem
+import com.egeysn.basicappv2.domain.models.SatelliteItem
 import com.egeysn.basicappv2.presentation.base.BaseMVVMFragment
 import com.egeysn.basicappv2.presentation.locations.adapter.LocationsAdapter
-import com.egeysn.basicappv2.presentation.newDetail.SatelliteDetailFragment
+import com.egeysn.basicappv2.presentation.satelliteDetail.SatelliteDetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -66,7 +66,7 @@ class LocationsFragment :
         }
     }
 
-    private fun handleSuccess(data: List<LocationItem>) {
+    private fun handleSuccess(data: List<SatelliteItem>) {
         binding.viewError.tvError.visibility = View.GONE
         searchAdapter.setItems(data)
     }

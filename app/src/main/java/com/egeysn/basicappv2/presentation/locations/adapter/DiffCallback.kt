@@ -2,12 +2,12 @@ package com.egeysn.basicappv2.presentation.locations.adapter
 
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.DiffUtil
-import com.egeysn.basicappv2.domain.models.LocationItem
+import com.egeysn.basicappv2.domain.models.SatelliteItem
 
-class DiffCallback(oldEmployeeList: List<LocationItem>, newEmployeeList: List<LocationItem>) :
+class DiffCallback(oldEmployeeList: List<SatelliteItem>, newEmployeeList: List<SatelliteItem>) :
     DiffUtil.Callback() {
-    private val mOldResultList: List<LocationItem>
-    private val mNewResultList: List<LocationItem>
+    private val mOldResultList: List<SatelliteItem>
+    private val mNewResultList: List<SatelliteItem>
 
     init {
         mOldResultList = oldEmployeeList
@@ -27,8 +27,8 @@ class DiffCallback(oldEmployeeList: List<LocationItem>, newEmployeeList: List<Lo
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        val oldResult: LocationItem = mOldResultList[oldItemPosition]
-        val newResult: LocationItem = mNewResultList[newItemPosition]
+        val oldResult: SatelliteItem = mOldResultList[oldItemPosition]
+        val newResult: SatelliteItem = mNewResultList[newItemPosition]
         return oldResult.id == newResult.id
     }
 

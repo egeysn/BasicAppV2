@@ -1,4 +1,4 @@
-package com.egeysn.basicappv2.presentation.newDetail
+package com.egeysn.basicappv2.presentation.satelliteDetail
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -46,18 +46,26 @@ class SatelliteDetailFragment : BaseMVVMFragment() {
         super.onViewCreated(view, savedInstanceState)
         setupObservers()
         val id = arguments?.getInt(ID)
-        viewModel.getNewDetail(id ?: 0)
+        id?.let {
+            viewModel.getSatelliteDetail(it)
+            viewModel.fetchPositions(it)
+        }
     }
 
     private fun setupObservers() {
-        viewModel.newDetailState.observe { handleSatelliteDetailStateChange(it) }
+        viewModel.satelliteDetailState.observe { handleSatelliteDetailStateChange(it) }
+        viewModel.satellitePositionState.observe {
+            it?.let { binding.tvLastPosition.text = "(${it.posX},${it.posY})" }
+        }
     }
-    private fun handleSatelliteDetailStateChange(state: SatelliteDetailViewModel.NewDetailViewState) {
+    private fun handleSatelliteDetailStateChange(
+        state: SatelliteDetailViewModel.SatelliteDetailViewState
+    ) {
         when (state) {
-            is SatelliteDetailViewModel.NewDetailViewState.Error -> handleError(state.error)
-            SatelliteDetailViewModel.NewDetailViewState.Init -> Unit
-            is SatelliteDetailViewModel.NewDetailViewState.Loading -> handleLoading(state.isLoading)
-            is SatelliteDetailViewModel.NewDetailViewState.Success -> handleSuccess(state.data)
+            is SatelliteDetailViewModel.SatelliteDetailViewState.Error -> handleError(state.error)
+            SatelliteDetailViewModel.SatelliteDetailViewState.Init -> Unit
+            is SatelliteDetailViewModel.SatelliteDetailViewState.Loading -> handleLoading(state.isLoading)
+            is SatelliteDetailViewModel.SatelliteDetailViewState.Success -> handleSatelliteDetailSuccess(state.data)
         }
     }
 
@@ -71,7 +79,7 @@ class SatelliteDetailFragment : BaseMVVMFragment() {
         }
     }
 
-    private fun handleSuccess(data: SatelliteDetailDto) {
+    private fun handleSatelliteDetailSuccess(data: SatelliteDetailDto) {
         binding.apply {
             bodySatelliteDetail.show()
             viewError.tvError.hide()
@@ -84,5 +92,10 @@ class SatelliteDetailFragment : BaseMVVMFragment() {
 
     private fun handleLoading(isLoading: Boolean) {
         binding.progressBar.isVisible = isLoading
+    }
+
+    override fun onDetach() {
+        viewModel.cancelRequests()
+        super.onDetach()
     }
 }

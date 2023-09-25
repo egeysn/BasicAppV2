@@ -1,4 +1,4 @@
-package com.egeysn.basicappv2.presentation.main
+package com.egeysn.basicappv2.presentation
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel

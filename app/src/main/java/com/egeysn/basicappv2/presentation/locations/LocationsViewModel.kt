@@ -4,7 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.egeysn.basicappv2.R
 import com.egeysn.basicappv2.common.utils.Resource
 import com.egeysn.basicappv2.common.utils.UiText
-import com.egeysn.basicappv2.domain.models.LocationItem
+import com.egeysn.basicappv2.domain.models.SatelliteItem
 import com.egeysn.basicappv2.domain.use_cases.search.GetLocationsUseCase
 import com.egeysn.basicappv2.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -56,7 +56,7 @@ class LocationsViewModel @Inject constructor(
     sealed class SearchViewState {
         object Init : SearchViewState()
         data class Loading(val isLoading: Boolean) : SearchViewState()
-        data class Success(val data: List<LocationItem>) : SearchViewState()
+        data class Success(val data: List<SatelliteItem>) : SearchViewState()
         data class Error(val error: UiText) : SearchViewState()
     }
 }
