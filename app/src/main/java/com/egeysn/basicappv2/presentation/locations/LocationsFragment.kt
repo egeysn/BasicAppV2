@@ -94,7 +94,6 @@ class LocationsFragment :
     private fun setUpList() {
         binding.rvUsers.apply {
             layoutManager = LinearLayoutManager(requireContext(), RecyclerView.VERTICAL, false)
-            itemAnimator = null
             addSimpleVerticalDecoration(
                 16,
                 includeFirstItem = true,

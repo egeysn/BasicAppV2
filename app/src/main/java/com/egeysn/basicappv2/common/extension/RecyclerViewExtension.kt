@@ -3,13 +3,17 @@ package com.egeysn.basicappv2.common.extension
 import android.graphics.Rect
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
+import com.egeysn.basicappv2.R
+import com.google.android.material.divider.MaterialDividerItemDecoration
 
 fun RecyclerView.addSimpleVerticalDecoration(
     spaceInDp: Int = 10,
     includeFirstItem: Boolean,
     includeLastItem: Boolean,
+    orientation: Int = MaterialDividerItemDecoration.VERTICAL
 ) {
-    this.addItemDecoration(object : RecyclerView.ItemDecoration() {
+    val decorator = object : MaterialDividerItemDecoration(this.context, orientation) {
+
         override fun getItemOffsets(
             outRect: Rect,
             view: View,
@@ -38,5 +42,8 @@ fun RecyclerView.addSimpleVerticalDecoration(
                 outRect.top = 0.toPx
             }
         }
-    })
+    }
+    decorator.setDividerColorResource(this.context, R.color.white)
+    decorator.isLastItemDecorated = false
+    this.addItemDecoration(decorator)
 }

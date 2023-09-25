@@ -19,6 +19,7 @@ class GetLocationsUseCaseImpl @Inject constructor(
     override suspend fun getLocations(query: String) = flow {
         try {
             emit(Resource.Loading())
+            kotlinx.coroutines.delay(500)
             val response = repository.getLocations(query)
             emit(Resource.Success(data = mapper.mapToView(response)))
         } catch (e: HttpException) {

@@ -4,8 +4,11 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.egeysn.basicappv2.R
 import com.egeysn.basicappv2.common.extension.safeGet
 import com.egeysn.basicappv2.databinding.RecyclerItemLocationsBinding
 import com.egeysn.basicappv2.domain.models.LocationItem
@@ -53,7 +56,21 @@ class LocationsAdapter(
         fun bind(item: LocationItem) {
             this.result = item
             binding.tvName.text = item.name.safeGet()
-            binding.tvStatus.text = item.active.toString()
+            if (item.active) {
+                binding.tvStatus.text = binding.root.context.getString(R.string.active)
+                binding.tvStatus.typeface = ResourcesCompat.getFont(binding.root.context, R.font.texta_bold)
+                binding.tvStatus.setTextColor(ContextCompat.getColor(binding.root.context, R.color.white))
+                binding.tvName.typeface = ResourcesCompat.getFont(binding.root.context, R.font.texta_bold)
+                binding.tvName.setTextColor(ContextCompat.getColor(binding.root.context, R.color.white))
+            } else {
+                binding.tvStatus.text = binding.root.context.getString(R.string.passive)
+                binding.tvStatus.typeface = ResourcesCompat.getFont(binding.root.context, R.font.texta_regular)
+                binding.tvStatus.setTextColor(ContextCompat.getColor(binding.root.context, R.color.white_50))
+                binding.tvName.typeface = ResourcesCompat.getFont(binding.root.context, R.font.texta_regular)
+                binding.tvName.setTextColor(ContextCompat.getColor(binding.root.context, R.color.white_50))
+            }
+            val resource = if (item.active) R.drawable.ic_circle_green else R.drawable.ic_circle_red
+            binding.ivStatus.setImageResource(resource)
         }
 
         override fun onClick(v: View?) = listener.onLocationsItemClicked(data[layoutPosition].id)

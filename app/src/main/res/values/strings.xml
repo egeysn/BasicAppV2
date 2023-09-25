@@ -9,4 +9,6 @@
     <string name="source">Source:</string>
     <string name="error_text">Not found !!</string>
     <string name="status">Status:</string>
+    <string name="active">Active</string>
+    <string name="passive">Passive</string>
 </resources>
