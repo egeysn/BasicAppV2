@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/locationsFragment"
-        android:name="com.egeysn.basicappv2.presentation.locations.LocationsFragment"
+        android:name="com.egeysn.basicappv2.presentation.satellites.LocationsFragment"
         android:label="LocationsFragment" >
         <action
             android:id="@+id/action_locationsFragment_to_satelliteDetailFragment"

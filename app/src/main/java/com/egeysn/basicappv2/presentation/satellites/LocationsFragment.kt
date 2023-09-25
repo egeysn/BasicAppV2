@@ -1,4 +1,4 @@
-package com.egeysn.basicappv2.presentation.locations
+package com.egeysn.basicappv2.presentation.satellites
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,8 +20,8 @@ import com.egeysn.basicappv2.common.utils.UiText
 import com.egeysn.basicappv2.databinding.FragmentLocationsBinding
 import com.egeysn.basicappv2.domain.models.SatelliteItem
 import com.egeysn.basicappv2.presentation.base.BaseMVVMFragment
-import com.egeysn.basicappv2.presentation.locations.adapter.LocationsAdapter
 import com.egeysn.basicappv2.presentation.satelliteDetail.SatelliteDetailFragment
+import com.egeysn.basicappv2.presentation.satellites.adapter.LocationsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

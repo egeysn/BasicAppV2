@@ -7,7 +7,7 @@ import com.egeysn.basicappv2.data.remote.models.satellitedetail.SatelliteDetailD
 
 interface SatelliteRepository {
 
-    suspend fun getLocations(query: String): List<SatelliteDto>
+    suspend fun getSatellites(query: String): List<SatelliteDto>
     suspend fun getSatelliteDetail(id: Int): SatelliteDetailDto?
     suspend fun getPosition(id: Int): PositionInfo?
     suspend fun insertSatelliteDetailToCache(entity: SatelliteDetailEntity)

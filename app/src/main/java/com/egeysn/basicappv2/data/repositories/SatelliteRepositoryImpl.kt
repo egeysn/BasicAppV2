@@ -19,7 +19,7 @@ class SatelliteRepositoryImpl @Inject constructor(
     private val dao: SatelliteDao
 ) : SatelliteRepository {
 
-    override suspend fun getLocations(query: String): List<SatelliteDto> {
+    override suspend fun getSatellites(query: String): List<SatelliteDto> {
         val fileInString: String =
             appContext.assets.open("satellite_list.json").bufferedReader().use { it.readText() }
         val data = gson.fromJson<List<SatelliteDto>>(fileInString)

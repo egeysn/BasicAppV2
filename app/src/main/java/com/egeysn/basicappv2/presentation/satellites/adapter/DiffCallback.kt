@@ -1,4 +1,4 @@
-package com.egeysn.basicappv2.presentation.locations.adapter
+package com.egeysn.basicappv2.presentation.satellites.adapter
 
 import androidx.annotation.Nullable
 import androidx.recyclerview.widget.DiffUtil

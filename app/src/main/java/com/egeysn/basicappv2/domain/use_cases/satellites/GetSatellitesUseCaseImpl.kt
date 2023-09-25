@@ -1,4 +1,4 @@
-package com.egeysn.basicappv2.domain.use_cases.search
+package com.egeysn.basicappv2.domain.use_cases.satellites
 
 import com.egeysn.basicappv2.R
 import com.egeysn.basicappv2.common.extension.handleError
@@ -11,16 +11,16 @@ import javax.inject.Inject
 import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 
-class GetLocationsUseCaseImpl @Inject constructor(
+class GetSatellitesUseCaseImpl @Inject constructor(
     private val repository: SatelliteRepository,
     private val mapper: SatelliteMapper,
-) : GetLocationsUseCase {
+) : GetSatellitesUseCase {
 
-    override suspend fun getLocations(query: String) = flow {
+    override suspend fun getSatellites(query: String) = flow {
         try {
             emit(Resource.Loading())
             kotlinx.coroutines.delay(500)
-            val response = repository.getLocations(query)
+            val response = repository.getSatellites(query)
             emit(Resource.Success(data = mapper.satellitesToView(response)))
         } catch (e: HttpException) {
             emit(Resource.Error(e.handleError()))

@@ -1,4 +1,4 @@
-package com.egeysn.basicappv2.presentation.locations.adapter
+package com.egeysn.basicappv2.presentation.satellites.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater

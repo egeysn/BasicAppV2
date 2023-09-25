@@ -1,11 +1,11 @@
-package com.egeysn.basicappv2.presentation.locations
+package com.egeysn.basicappv2.presentation.satellites
 
 import androidx.lifecycle.viewModelScope
 import com.egeysn.basicappv2.R
 import com.egeysn.basicappv2.common.utils.Resource
 import com.egeysn.basicappv2.common.utils.UiText
 import com.egeysn.basicappv2.domain.models.SatelliteItem
-import com.egeysn.basicappv2.domain.use_cases.search.GetLocationsUseCase
+import com.egeysn.basicappv2.domain.use_cases.satellites.GetSatellitesUseCase
 import com.egeysn.basicappv2.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 
 @HiltViewModel
 class LocationsViewModel @Inject constructor(
-    private val searchUserUseCase: GetLocationsUseCase
+    private val searchUserUseCase: GetSatellitesUseCase
 ) : BaseViewModel() {
     private val _state = MutableStateFlow<SearchViewState>(SearchViewState.Init)
     fun getViewState(): StateFlow<SearchViewState> = _state.asStateFlow()
@@ -31,7 +31,7 @@ class LocationsViewModel @Inject constructor(
         searchJob?.cancel()
         searchJob = viewModelScope.launch {
             delay(500L)
-            searchUserUseCase.getLocations(query).onEach {
+            searchUserUseCase.getSatellites(query).onEach {
                 when (it) {
                     is Resource.Error -> {
                         setLoading(false)

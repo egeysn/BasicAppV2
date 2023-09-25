@@ -10,6 +10,7 @@ import com.egeysn.basicappv2.domain.use_cases.detail.GetSatelliteDetailUseCase
 import com.egeysn.basicappv2.domain.use_cases.positions.GetPositionUseCase
 import com.egeysn.basicappv2.presentation.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -20,7 +21,6 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import timber.log.Timber
-import javax.inject.Inject
 
 @HiltViewModel
 class SatelliteDetailViewModel @Inject constructor(
@@ -72,17 +72,17 @@ class SatelliteDetailViewModel @Inject constructor(
         viewModelScope.launch(Dispatchers.IO) {
             getPositionUseCase.getPosition(id).onEach { result ->
                 result.data?.let {
-                    schedulePositions(it)
+                    schedulePositions(it, it.positions.size)
                 }
             }.launchIn(this)
         }
     }
 
-    private fun schedulePositions(info: PositionInfo) {
+    private fun schedulePositions(info: PositionInfo, size: Int) {
         positionJob = viewModelScope.launch(Dispatchers.IO) {
             while (true) {
                 try {
-                    if (index > 2) index = 0
+                    if (index > size) index = 0
                     _satellitePositionState.value = info.positions[index++]
                     delay(3000)
                 } catch (e: Exception) {
