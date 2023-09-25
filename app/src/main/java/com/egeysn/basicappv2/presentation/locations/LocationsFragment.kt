@@ -10,8 +10,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.egeysn.basicappv2.R
 import com.egeysn.basicappv2.common.extension.addSimpleVerticalDecoration
 import com.egeysn.basicappv2.common.extension.show
 import com.egeysn.basicappv2.common.utils.UiText
@@ -19,6 +21,7 @@ import com.egeysn.basicappv2.databinding.FragmentLocationsBinding
 import com.egeysn.basicappv2.domain.models.LocationItem
 import com.egeysn.basicappv2.presentation.base.BaseMVVMFragment
 import com.egeysn.basicappv2.presentation.locations.adapter.LocationsAdapter
+import com.egeysn.basicappv2.presentation.newDetail.SatelliteDetailFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -42,7 +45,7 @@ class LocationsFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        // binding.etSearch.clearFocus()
+        binding.etSearch.clearFocus()
         setUpList()
         listeners()
         setupObservers()
@@ -112,7 +115,7 @@ class LocationsFragment :
         }
     }
 
-    override fun onLocationsItemClicked(id: Int) {
-        TODO("Not yet implemented")
+    override fun onLocationsItemClicked(id: Int, name: String) {
+        findNavController().navigate(R.id.action_locationsFragment_to_satelliteDetailFragment, SatelliteDetailFragment.toBundle(name, id))
     }
 }

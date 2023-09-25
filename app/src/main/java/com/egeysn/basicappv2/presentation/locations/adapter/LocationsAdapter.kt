@@ -58,25 +58,49 @@ class LocationsAdapter(
             binding.tvName.text = item.name.safeGet()
             if (item.active) {
                 binding.tvStatus.text = binding.root.context.getString(R.string.active)
-                binding.tvStatus.typeface = ResourcesCompat.getFont(binding.root.context, R.font.texta_bold)
-                binding.tvStatus.setTextColor(ContextCompat.getColor(binding.root.context, R.color.white))
-                binding.tvName.typeface = ResourcesCompat.getFont(binding.root.context, R.font.texta_bold)
-                binding.tvName.setTextColor(ContextCompat.getColor(binding.root.context, R.color.white))
+                binding.tvStatus.typeface =
+                    ResourcesCompat.getFont(binding.root.context, R.font.texta_bold)
+                binding.tvStatus.setTextColor(
+                    ContextCompat.getColor(
+                        binding.root.context,
+                        R.color.white
+                    )
+                )
+                binding.tvName.typeface =
+                    ResourcesCompat.getFont(binding.root.context, R.font.texta_bold)
+                binding.tvName.setTextColor(
+                    ContextCompat.getColor(
+                        binding.root.context,
+                        R.color.white
+                    )
+                )
             } else {
                 binding.tvStatus.text = binding.root.context.getString(R.string.passive)
-                binding.tvStatus.typeface = ResourcesCompat.getFont(binding.root.context, R.font.texta_regular)
-                binding.tvStatus.setTextColor(ContextCompat.getColor(binding.root.context, R.color.white_50))
-                binding.tvName.typeface = ResourcesCompat.getFont(binding.root.context, R.font.texta_regular)
-                binding.tvName.setTextColor(ContextCompat.getColor(binding.root.context, R.color.white_50))
+                binding.tvStatus.typeface =
+                    ResourcesCompat.getFont(binding.root.context, R.font.texta_regular)
+                binding.tvStatus.setTextColor(
+                    ContextCompat.getColor(
+                        binding.root.context,
+                        R.color.white_50
+                    )
+                )
+                binding.tvName.typeface =
+                    ResourcesCompat.getFont(binding.root.context, R.font.texta_regular)
+                binding.tvName.setTextColor(
+                    ContextCompat.getColor(
+                        binding.root.context,
+                        R.color.white_50
+                    )
+                )
             }
             val resource = if (item.active) R.drawable.ic_circle_green else R.drawable.ic_circle_red
             binding.ivStatus.setImageResource(resource)
         }
 
-        override fun onClick(v: View?) = listener.onLocationsItemClicked(data[layoutPosition].id)
+        override fun onClick(v: View?) = listener.onLocationsItemClicked(data[layoutPosition].id, data[layoutPosition].name)
     }
 
     interface LocationsItemListener {
-        fun onLocationsItemClicked(id: Int)
+        fun onLocationsItemClicked(id: Int, name: String)
     }
 }

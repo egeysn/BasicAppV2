@@ -1,5 +1,7 @@
 package com.egeysn.basicappv2.di
 
+import com.egeysn.basicappv2.domain.use_cases.detail.GetSatelliteDetailUseCase
+import com.egeysn.basicappv2.domain.use_cases.detail.GetSatelliteDetailUseCaseImpl
 import com.egeysn.basicappv2.domain.use_cases.search.GetLocationsUseCase
 import com.egeysn.basicappv2.domain.use_cases.search.GetLocationsUseCaseImpl
 import dagger.Binds
@@ -16,4 +18,10 @@ abstract class UseCaseModule {
     abstract fun bindGetLocations(
         getLocationsUseCaseImpl: GetLocationsUseCaseImpl,
     ): GetLocationsUseCase
+
+    @Binds
+    @Singleton
+    abstract fun bindGetSatelliteDetail(
+        getSatelliteDetailUseCaseImpl: GetSatelliteDetailUseCaseImpl,
+    ): GetSatelliteDetailUseCase
 }
