@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.os.bundleOf
 import androidx.core.view.isVisible
-import androidx.fragment.app.activityViewModels
+import androidx.fragment.app.viewModels
 import com.egeysn.basicappv2.common.extension.hide
 import com.egeysn.basicappv2.common.extension.safeGet
 import com.egeysn.basicappv2.common.extension.show
@@ -29,7 +29,7 @@ class SatelliteDetailFragment : BaseMVVMFragment() {
     }
 
     private lateinit var binding: FragmentSatelliteDetailBinding
-    private val viewModel: SatelliteDetailViewModel by activityViewModels()
+    private val viewModel: SatelliteDetailViewModel by viewModels()
 
     private val name get() = arguments?.getString(NAME).safeGet()
 
@@ -95,7 +95,7 @@ class SatelliteDetailFragment : BaseMVVMFragment() {
     }
 
     override fun onDetach() {
-        viewModel.cancelRequests()
+        viewModel.disableSchedulePositions()
         super.onDetach()
     }
 }

@@ -21,17 +21,17 @@ import com.egeysn.basicappv2.databinding.FragmentLocationsBinding
 import com.egeysn.basicappv2.domain.models.SatelliteItem
 import com.egeysn.basicappv2.presentation.base.BaseMVVMFragment
 import com.egeysn.basicappv2.presentation.satelliteDetail.SatelliteDetailFragment
-import com.egeysn.basicappv2.presentation.satellites.adapter.LocationsAdapter
+import com.egeysn.basicappv2.presentation.satellites.adapter.SatellitesAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class LocationsFragment :
-    BaseMVVMFragment(), LocationsAdapter.LocationsItemListener {
+class SatellitesFragment :
+    BaseMVVMFragment(), SatellitesAdapter.LocationsItemListener {
 
-    private var searchAdapter: LocationsAdapter = LocationsAdapter(this)
+    private var searchAdapter: SatellitesAdapter = SatellitesAdapter(this)
 
     private lateinit var binding: FragmentLocationsBinding
-    private val viewModel: LocationsViewModel by viewModels()
+    private val viewModel: SatellitesViewModel by viewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -57,12 +57,12 @@ class LocationsFragment :
         }
     }
 
-    private fun handleStateChange(state: LocationsViewModel.SearchViewState) {
+    private fun handleStateChange(state: SatellitesViewModel.SearchViewState) {
         when (state) {
-            is LocationsViewModel.SearchViewState.Error -> handleError(state.error)
-            LocationsViewModel.SearchViewState.Init -> Unit
-            is LocationsViewModel.SearchViewState.Loading -> handleLoading(state.isLoading)
-            is LocationsViewModel.SearchViewState.Success -> handleSuccess(state.data)
+            is SatellitesViewModel.SearchViewState.Error -> handleError(state.error)
+            SatellitesViewModel.SearchViewState.Init -> Unit
+            is SatellitesViewModel.SearchViewState.Loading -> handleLoading(state.isLoading)
+            is SatellitesViewModel.SearchViewState.Success -> handleSuccess(state.data)
         }
     }
 

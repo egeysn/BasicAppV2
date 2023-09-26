@@ -42,7 +42,7 @@ object AppModule {
 
     @Provides
     @Singleton
-    fun provideLocationsMapper(): SatelliteMapper = SatelliteMapper()
+    fun provideSatellitesMapper(): SatelliteMapper = SatelliteMapper()
 
     @Provides
     @Singleton

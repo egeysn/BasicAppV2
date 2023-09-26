@@ -13,9 +13,9 @@ import com.egeysn.basicappv2.common.extension.safeGet
 import com.egeysn.basicappv2.databinding.RecyclerItemLocationsBinding
 import com.egeysn.basicappv2.domain.models.SatelliteItem
 
-class LocationsAdapter(
+class SatellitesAdapter(
     private val listener: LocationsItemListener,
-) : RecyclerView.Adapter<LocationsAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<SatellitesAdapter.ViewHolder>() {
 
     private val data = ArrayList<SatelliteItem>()
 

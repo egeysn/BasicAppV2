@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 
 @HiltViewModel
-class LocationsViewModel @Inject constructor(
+class SatellitesViewModel @Inject constructor(
     private val searchUserUseCase: GetSatellitesUseCase
 ) : BaseViewModel() {
     private val _state = MutableStateFlow<SearchViewState>(SearchViewState.Init)

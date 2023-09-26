@@ -6,10 +6,11 @@
 
     <fragment
         android:id="@+id/locationsFragment"
-        android:name="com.egeysn.basicappv2.presentation.satellites.LocationsFragment"
+        android:name="com.egeysn.basicappv2.presentation.satellites.SatellitesFragment"
         android:label="LocationsFragment" >
         <action
             android:id="@+id/action_locationsFragment_to_satelliteDetailFragment"
+            app:popUpTo="@id/locationsFragment"
             app:destination="@id/satelliteDetailFragment" />
     </fragment>
 
