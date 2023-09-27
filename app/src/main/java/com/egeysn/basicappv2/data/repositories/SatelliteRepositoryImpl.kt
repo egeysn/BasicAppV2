@@ -11,6 +11,7 @@ import com.egeysn.basicappv2.data.remote.models.satellitedetail.SatelliteDetailD
 import com.egeysn.basicappv2.domain.repositories.SatelliteRepository
 import com.google.gson.Gson
 import dagger.hilt.android.qualifiers.ApplicationContext
+import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class SatelliteRepositoryImpl @Inject constructor(
@@ -44,7 +45,7 @@ class SatelliteRepositoryImpl @Inject constructor(
         dao.insertSatelliteDetail(entity)
     }
 
-    override suspend fun getSatelliteDetailFromCache(id: Int): SatelliteDetailEntity? {
+    override suspend fun getSatelliteDetailFromCache(id: Int): Flow<SatelliteDetailEntity?> {
         return dao.getSatelliteDetail(id)
     }
 }
